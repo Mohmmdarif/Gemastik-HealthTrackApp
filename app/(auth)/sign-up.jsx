@@ -13,7 +13,7 @@ const SignUp = () => {
     <NativeBaseProvider>
       <SafeAreaView className="bg-white h-full">
         <ScrollView>
-          <View className="w-full justify-center min-h-[100vh] px-4">
+          <View className="w-full justify-center min-h-[100vh] px-4 ">
             <Text className="font-pbold text-2xl mb-3">Daftar Akun</Text>
             <Text className="font-pregular text-sm">Daftar sekarang dan mulailah perjalanan kesehatan Anda bersama kami.</Text>
             <View className="mt-[51px]">

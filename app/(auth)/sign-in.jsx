@@ -13,7 +13,7 @@ const SignIn = () => {
     <NativeBaseProvider>
       <SafeAreaView className="bg-white h-full">
         <ScrollView>
-          <View className="w-full justify-center min-h-[100vh] px-4">
+          <View className="w-full justify-center min-h-[85vh] px-4">
             <Text className="font-pbold text-2xl mb-3">Masuk Akun</Text>
             <Text className="font-pregular text-sm">Dapatkan akses cepat dan mudah ke rumah sakit dan layanan medis.</Text>
             <View className="mt-[51px]">
