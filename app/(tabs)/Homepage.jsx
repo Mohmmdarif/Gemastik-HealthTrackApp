@@ -3,7 +3,7 @@ import React from 'react'
 import { Image, NativeBaseProvider, ScrollView } from 'native-base'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { icons, images } from '../../constants'
+import { components, icons, images } from '../../constants'
 import Search from '../search/[query]'
 
 const Homepage = () => {
@@ -36,6 +36,7 @@ const Homepage = () => {
               </View>
             </View>
 
+
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -45,3 +46,6 @@ const Homepage = () => {
 }
 
 export default Homepage
+
+
+

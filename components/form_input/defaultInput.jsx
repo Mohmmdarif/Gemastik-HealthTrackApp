@@ -2,12 +2,15 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { FormControl, Input, Stack, WarningOutlineIcon } from 'native-base'
 
-const defaultInput = ({ style, title }) => {
+const defaultInput = ({ style, title, isRequired }) => {
   return (
-    <FormControl className={`${style}`} isRequired>
+    <FormControl className={`${style}`} isRequired={isRequired}>
       <Stack>
         <FormControl.Label>{title}</FormControl.Label>
-        <Input type="text" placeholder={`${title}`} borderRadius={12} fontSize={14} />
+        <Input type="text" placeholder={`${title}`} borderRadius={12} fontSize={14} _focus={{
+          borderColor: "purple.500",
+          backgroundColor: "purple.50",
+        }} />
         <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
           Atleast 6 characters are required.
         </FormControl.ErrorMessage>
