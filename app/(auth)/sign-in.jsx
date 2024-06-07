@@ -19,7 +19,7 @@ const SignIn = () => {
             <View className="mt-[51px]">
               <Box w="100%" maxWidth="full">
                 {/* Input Email */}
-                <components.DefaultInput title="Email" />
+                <components.DefaultInput title="Email" isRequired={true} />
 
                 {/* Input Password */}
                 <components.InputPassword title="Password" style="mt-3" />
@@ -40,7 +40,7 @@ const SignIn = () => {
             </View>
 
             <Button className="bg-primary h-[44px] mt-8 rounded-xl" block>
-              <Text className="text-white font-psemibold text-lg">Masuk</Text>
+              <Text className="text-white font-psemibold text-md">Masuk</Text>
             </Button>
             <View className="mt-2 flex-row items-center justify-center">
               <Text className="font-pregular text-sm">Belum punya Akun ?
