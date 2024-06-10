@@ -39,7 +39,7 @@
 
 import React, { useMemo, forwardRef, useImperativeHandle } from 'react';
 import BottomSheet from '@gorhom/bottom-sheet';
-import { Box } from 'native-base';
+import { Box, ScrollView } from 'native-base';
 
 const BottomSheetComp = forwardRef((props, ref) => {
   const { snapPoints, content, initialSnapPoint = 0 } = props;
@@ -54,9 +54,9 @@ const BottomSheetComp = forwardRef((props, ref) => {
 
   return (
     <BottomSheet ref={bottomSheetRef} index={1} snapPoints={memoizedSnapPoints}>
-      <Box p={4} bg="white" style={{ height: '100%' }}>
+      <ScrollView p={4} bg="white" style={{ height: '100%' }}>
         {content}
-      </Box>
+      </ScrollView>
     </BottomSheet>
   );
 });

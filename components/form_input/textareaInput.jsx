@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { Box, FormControl, NativeBaseProvider, TextArea } from 'native-base';
 
-const textareaInput = ({ title, style }) => {
-  const [text, setText] = useState("");
+const textareaInput = ({ title, value, onChange, style }) => {
 
   return (
     <Box w="full" mx="auto" className={style}>
       <FormControl.Label>{title}</FormControl.Label>
       <TextArea
-        value={text}
-        onChangeText={(value) => setText(value)}
+        value={value}
+        onChangeText={onChange}
         placeholder="Keterangan (opsional)"
         height={250}
         borderRadius={12}

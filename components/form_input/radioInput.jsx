@@ -2,8 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { FormControl, Radio } from 'native-base';
 
-const radioInput = ({ title, style }) => {
-  const [value, setValue] = React.useState("darurat");
+const radioInput = ({ title, value, onChange, style }) => {
 
   return (
     <View className={style}>
@@ -11,17 +10,15 @@ const radioInput = ({ title, style }) => {
       <Radio.Group
         name="situasi"
         accessibilityLabel="favorite number"
-        value={value}
+        value={value ? "true" : "false"}
         flexDirection={"row"}
-        onChange={nextValue => {
-          setValue(nextValue);
-        }}
+        onChange={(newValue) => onChange(newValue === "true")}
         colorScheme={"purple"}
       >
-        <Radio value="darurat" my={1}>
+        <Radio value="true" my={1}>
           Darurat
         </Radio>
-        <Radio value="non darurat" my={1} marginLeft={10}>
+        <Radio value="false" my={1} marginLeft={10}>
           Non Darurat
         </Radio>
       </Radio.Group>

@@ -10,9 +10,7 @@ const ScreenLayout = () => {
         <Stack.Screen name="HospitalRecomendation" options={{
           headerShown: true,
           title: "Rumah sakit terdekat",
-
         }} />
-
       </Stack>
 
       <StatusBar style="auto" />
