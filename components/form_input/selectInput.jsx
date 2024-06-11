@@ -1,18 +1,16 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { Box, CheckIcon, FormControl, Select, WarningOutlineIcon } from 'native-base'
 
-const selectInput = ({ title, style }) => {
-  const [service, setService] = React.useState("");
-
+const selectInput = ({ title, value, onChange, options, style }) => {
   return (
     <Box w="full" mx="auto" className={style}>
       <FormControl.Label>{title}</FormControl.Label>
       <Select
-        selectedValue={service}
+        selectedValue={value}
+        value={value}
         minWidth="200"
-        accessibilityLabel="Pilih layanan"
-        placeholder="Pilih layanan"
+        accessibilityLabel={`Pilih ${title}`}
+        placeholder={`Pilih ${title}`}
         _selectedItem={{
           bg: "#701AF5",
           endIcon: <CheckIcon size="5" color="white" />,
@@ -20,14 +18,12 @@ const selectInput = ({ title, style }) => {
         }}
         rounded={12}
         fontSize={14}
-
-        onValueChange={itemValue => setService(itemValue)}
+        onValueChange={onChange}
+        required
       >
-        <Select.Item label="Penyakit Dalam" value="penyakit dalam" />
-        <Select.Item label="Jantung" value="jantung" />
-        <Select.Item label="Kandungan" value="kandungan" />
-        <Select.Item label="Anak" value="anak" />
-        <Select.Item label="Syaraf" value="syaraf" />
+        {options.map((option, index) => (
+          <Select.Item key={index} label={option.label} value={option.value} />
+        ))}
       </Select>
     </Box>
   )

@@ -17,7 +17,7 @@ export default function App() {
       </View>
       <View className="flex justify-center items-center">
         <Image source={images.coverWelcomeScreen} resizeMode="contain" className="flex justify-end relative" />
-        <Pressable onPress={() => router.push("/HospitalRecomendation")} className="absolute bg-primary p-6 rounded-full bottom-24">
+        <Pressable onPress={() => router.push("/Homepage")} className="absolute bg-primary p-6 rounded-full bottom-24">
           <Image source={icons.rightArrow} resizeMode="contain" className="w-5 h-5" />
         </Pressable>
       </View>
