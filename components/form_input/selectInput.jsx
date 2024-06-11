@@ -19,6 +19,7 @@ const selectInput = ({ title, value, onChange, options, style }) => {
         rounded={12}
         fontSize={14}
         onValueChange={onChange}
+        required
       >
         {options.map((option, index) => (
           <Select.Item key={index} label={option.label} value={option.value} />
