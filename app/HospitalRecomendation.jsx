@@ -6,7 +6,7 @@ import HospitalCard from '../components/card/cardHospital'
 
 import supabase from '../supabase'
 import { getPreciseDistance } from 'geolib';
-import useLocation from '../lib/hooks/useLocation'
+import * as Location from 'expo-location';
 
 import { useRoute } from '@react-navigation/native'
 import { useRouter } from 'expo-router'
@@ -16,7 +16,8 @@ const HospitalRecomendation = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [hospitals, setHospitals] = useState([]);
   const [distance, setDistance] = useState([]);
-  const location = useLocation();
+  const [location, setLocation] = useState();
+  // const location = useLocation();
 
   const route = useRoute();
   const { formData } = route.params;
@@ -107,6 +108,25 @@ const HospitalRecomendation = () => {
       calculateDistance();
     }
   }, [location, hospitals]);
+
+  useEffect(() => {
+    const getPermission = async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        console.log('Please grant permission');
+        return;
+      }
+
+      let currentLocation = await Location.getCurrentPositionAsync({});
+      setLocation({
+        latitude: currentLocation.coords.latitude,
+        longitude: currentLocation.coords.longitude,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      });
+    }
+    getPermission();
+  }, [])
 
   return (
     <NativeBaseProvider>
