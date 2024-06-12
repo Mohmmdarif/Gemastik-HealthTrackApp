@@ -16,11 +16,11 @@ const HospitalRecomendation = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [hospitals, setHospitals] = useState([]);
   const [distance, setDistance] = useState([]);
-  const [location, setLocation] = useState();
-  // const location = useLocation();
+  const location = useLocation();
 
   const route = useRoute();
   const { formData } = route.params;
+  console.log(formData, "formData")
 
   // console.log(hospitals)
 
@@ -34,10 +34,10 @@ const HospitalRecomendation = () => {
   }
 
   const calculateDistance = () => {
-    if (location && hospitals.length > 0) {
+    if (formData.latitude && formData.longitude && hospitals.length > 0) {
       const calculatedDistance = hospitals.map(hospitals => {
         return getPreciseDistance(
-          { latitude: location.latitude, longitude: location.longitude },
+          { latitude: formData.latitude, longitude: formData.longitude },
           { latitude: hospitals.latitude, longitude: hospitals.longitude },
         ) / 1000;
       });
@@ -49,11 +49,11 @@ const HospitalRecomendation = () => {
     const sortedHospitals = [...hospitals];
     sortedHospitals.sort((a, b) => {
       const distanceA = getPreciseDistance(
-        { latitude: location.latitude, longitude: location.longitude },
+        { latitude: formData.latitude, longitude: formData.longitude },
         { latitude: a.latitude, longitude: a.longitude }
       );
       const distanceB = getPreciseDistance(
-        { latitude: location.latitude, longitude: location.longitude },
+        { latitude: formData.latitude, longitude: formData.longitude },
         { latitude: b.latitude, longitude: b.longitude }
       );
       return distanceA - distanceB;
@@ -104,29 +104,11 @@ const HospitalRecomendation = () => {
   }, []);
 
   useEffect(() => {
-    if (location && hospitals.length > 0) {
+
+    if (hospitals.length > 0) {
       calculateDistance();
     }
   }, [location, hospitals]);
-
-  useEffect(() => {
-    const getPermission = async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        console.log('Please grant permission');
-        return;
-      }
-
-      let currentLocation = await Location.getCurrentPositionAsync({});
-      setLocation({
-        latitude: currentLocation.coords.latitude,
-        longitude: currentLocation.coords.longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      });
-    }
-    getPermission();
-  }, [])
 
   return (
     <NativeBaseProvider>

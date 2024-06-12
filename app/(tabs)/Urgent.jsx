@@ -119,7 +119,7 @@ const Urgent = () => {
     }
     getPermission();
   }, [])
-
+  console.log(formData,"location")
   return (
     <NativeBaseProvider>
       {/* <View> */}
