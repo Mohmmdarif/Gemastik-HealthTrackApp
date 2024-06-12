@@ -20,11 +20,11 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.mohmmdarif.HealthTrackApp",
       "permissions": [
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION"
-      ]
+      ],
+      "package": "com.mohmmdarif.HealthTrackApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"

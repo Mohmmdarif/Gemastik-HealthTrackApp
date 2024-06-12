@@ -6,7 +6,7 @@ import HospitalCard from '../components/card/cardHospital'
 
 import supabase from '../supabase'
 import { getPreciseDistance } from 'geolib';
-import useLocation from '../lib/hooks/useLocation'
+// import useLocation from '../lib/hooks/useLocation'
 
 import { useRoute } from '@react-navigation/native'
 import { useRouter } from 'expo-router'
