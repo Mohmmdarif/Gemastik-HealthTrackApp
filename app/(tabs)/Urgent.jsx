@@ -119,7 +119,7 @@ const Urgent = () => {
     }
     getPermission();
   }, [])
-  console.log(formData,"location")
+  console.log(formData, "location")
   return (
     <NativeBaseProvider>
       {/* <View> */}
@@ -150,7 +150,7 @@ const Urgent = () => {
           {/* <components.BottomSheetComp /> */}
           <BottomSheetComp
             ref={bottomSheetRef}
-            snapPoints={value === "pribadi" ? ['5%', '40%', '65%'] : ['5%', '50%', '90%']}
+            snapPoints={value === "pribadi" ? ['15%', '40%', '65%'] : ['15%', '50%', '90%']}
             content={
               <Box w="100%" maxWidth="full">
                 {value === "oranglain" && (

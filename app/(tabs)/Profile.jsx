@@ -3,7 +3,7 @@ import React from 'react'
 
 const Profile = () => {
   return (
-    <View>
+    <View className="h-full flex justify-center items-center bg-white">
       <Text>Profile</Text>
     </View>
   )

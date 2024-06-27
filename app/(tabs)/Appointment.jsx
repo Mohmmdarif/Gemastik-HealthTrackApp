@@ -3,7 +3,7 @@ import React from 'react'
 
 const Appointment = () => {
   return (
-    <View>
+    <View className="h-full flex justify-center items-center bg-white">
       <Text>Appointment</Text>
     </View>
   )

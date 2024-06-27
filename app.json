@@ -24,7 +24,12 @@
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION"
       ],
-      "package": "com.mohmmdarif.HealthTrackApp"
+      "package": "com.mohmmdarif.HealthTrackApp",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyC71v6PN4VOhs8ToBIwair4rS2onEwx01k"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

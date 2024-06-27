@@ -2,7 +2,7 @@ import { View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Alert, CloseIcon, HStack, IconButton, NativeBaseProvider, ScrollView, StatusBar, VStack } from 'native-base'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import HospitalCard from '../components/card/cardHospital'
+import HospitalCard from '@/../../components/card/cardHospital'
 
 import supabase from '../supabase'
 import { getPreciseDistance } from 'geolib';
@@ -72,7 +72,22 @@ const HospitalRecomendation = () => {
       if (error) {
         throw error;
       }
-      console.log('Data inserted successfully');
+
+      const historyData = {
+        nama_pasien: updatedFormData.nama_lengkap,
+        poli: updatedFormData.poli,
+        penyakit: updatedFormData.penyakit,
+        status: updatedFormData.status,
+        rumah_sakit: hospitals.find(hospital => hospital.id === hospital_id).name,
+      };
+      console.log("History", historyData);
+      const { data: history, error: errorHistory } = await supabase
+        .from('riwayat')
+        .insert([historyData]);
+
+      if (errorHistory) {
+        throw errorHistory;
+      }
       setShowAlert(true);
       setTimeout(() => {
         setShowAlert(false);
@@ -82,6 +97,9 @@ const HospitalRecomendation = () => {
       console.error('Error posting data', error);
     }
   };
+
+  // console.log("hospitals", hospitals)
+  // console.log("nama hospital", hospitals.find(hospital => hospital.id === hospital.id).name)
 
   const fetchData = async () => {
     try {
@@ -110,21 +128,6 @@ const HospitalRecomendation = () => {
       calculateDistance();
     }
   }, [hospitals]);
-
-  // useEffect(() => {
-  //   const getPermission = async () => {
-  //     let { status } = await Location.requestForegroundPermissionsAsync();
-  //     if (status !== 'granted') {
-  //       console.log('Please grant permission');
-  //       return;
-  //     }
-
-  //     let currentLocation = await Location.getCurrentPositionAsync({});
-  //     setLocation({ latitude: currentLocation.coords.latitude, longitude: currentLocation.coords.longitude });
-  //   }
-  //   getPermission();
-  // }, [])
-  // console.log(location, "location123123")
 
   return (
     <NativeBaseProvider>
